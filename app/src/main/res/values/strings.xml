@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Medicare</string>
     <string name="action_settings">Settings</string>
+    <string name="tab_generic">Generic</string>
+    <string name="tab_category">Category</string>
+    <string name="tab_brand">Brand</string>
 </resources>
