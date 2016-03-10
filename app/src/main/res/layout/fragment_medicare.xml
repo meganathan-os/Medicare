@@ -10,15 +10,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvCategoryTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
         <EditText
             android:id="@+id/etSearchBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="@dimen/search_bar_height"
+            android:paddingBottom="@dimen/padding_20dp"/>
     </LinearLayout>
 
     <ListView

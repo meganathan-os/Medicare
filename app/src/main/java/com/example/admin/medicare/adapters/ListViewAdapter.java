@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import com.example.admin.medicare.R;
 
@@ -39,16 +40,17 @@ public class ListViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View singleRow = convertView;
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context
                 .LAYOUT_INFLATER_SERVICE);
-        singleRow = inflater.inflate(R.layout.list_view_single_item,parent,false);
-        singleRow.setOnClickListener(new View.OnClickListener() {
+        convertView = inflater.inflate(R.layout.list_view_single_item,parent,false);
+        TextView tvItem = (TextView) convertView.findViewById(R.id.tvItem);
+        tvItem.setText(items.get(position));
+        convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //click listener for each list item
             }
         });
-        return singleRow;
+        return convertView;
     }
 }
