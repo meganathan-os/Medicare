@@ -3,13 +3,16 @@ package com.example.admin.medicare.fragments;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ScrollView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.admin.medicare.R;
@@ -33,6 +36,8 @@ public class MedicareFragment extends Fragment {
     private List<String> items;
     private Map<String, Integer> mapIndex;
     private ListView listView;
+    private EditText searchBar;
+    private ListViewAdapter listViewAdapter;
 
     public MedicareFragment() {
     }
@@ -59,6 +64,7 @@ public class MedicareFragment extends Fragment {
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_medicare, container, false);
         listView = (ListView) rootView.findViewById(R.id.listView);
+        searchBar = (EditText) rootView.findViewById(R.id.etSearchBar);
         setAdapterToFragment();
         displayIndex(inflater);
         return rootView;
@@ -74,6 +80,7 @@ public class MedicareFragment extends Fragment {
                 convertListToStringArray(items);
                // displayIndex();
                 setAdapterToListView(items);
+                search();
                 break;
             case 1:
                 items = ((MainActivity) getActivity()).getBrandItems();
@@ -106,7 +113,7 @@ public class MedicareFragment extends Fragment {
 
     private void setAdapterToListView(List<String> items) {
         ListView listView = (ListView) rootView.findViewById(R.id.listView);
-        ListViewAdapter listViewAdapter = new ListViewAdapter(mContext, items);
+        listViewAdapter = new ListViewAdapter(mContext, items,mFragmentNumber);
         listView.setAdapter(listViewAdapter);
     }
 
@@ -140,5 +147,24 @@ public class MedicareFragment extends Fragment {
             });
             llSideIndexLayout.addView(textView);
         }
+    }
+
+    private void search(){
+        searchBar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                listViewAdapter.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                listViewAdapter.getFilter();
+            }
+        });
     }
 }
