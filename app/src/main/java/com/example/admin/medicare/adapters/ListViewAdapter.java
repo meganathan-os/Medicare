@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.admin.medicare.R;
 import com.example.admin.medicare.activities.DetailsActivity;
 import com.example.admin.medicare.activities.GenericActivity;
+import com.example.admin.medicare.utilities.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,7 +80,8 @@ public class ListViewAdapter extends BaseAdapter implements Filterable{
         Intent intent = new Intent();
         intent.setClass(mContext.getApplicationContext(), nextActivity);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("string",item);
+        intent.putExtra(Constants.GENERIC_LIST_KEY, item);
+        intent.putExtra(Constants.BRAND_LIST_KEY,item);
         mContext.startActivity(intent);
     }
 

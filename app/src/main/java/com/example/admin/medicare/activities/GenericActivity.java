@@ -29,7 +29,7 @@ public class GenericActivity extends AppCompatActivity {
 
     private void getGenericListFromDB(){
         Bundle bundle = getIntent().getExtras();
-        String genericListString=bundle.getString("string");
+        String genericListString=bundle.getString("generic_list_key");
         List<String> genericList = databaseHelper.getAllDrugs(genericListString);
         Collections.sort(genericList);
         setAdapterToListView(genericList);
