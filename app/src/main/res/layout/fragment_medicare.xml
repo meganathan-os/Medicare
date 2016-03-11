@@ -4,23 +4,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/llcategoryLayoutTitle"
+    <EditText
+        android:id="@+id/etSearchBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="@dimen/search_bar_height"
+        android:paddingBottom="@dimen/padding_10dp" />
 
-        <EditText
-            android:id="@+id/etSearchBar"
+    <LinearLayout
+        android:id="@+id/llListView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etSearchBar">
+
+        <ListView
+            android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/search_bar_height"
-            android:paddingBottom="@dimen/padding_20dp"/>
+            android:layout_height="match_parent">
+        </ListView>
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/llcategoryLayoutTitle">
-    </ListView>
+    <LinearLayout
+        android:id="@+id/llIndexSideLayout"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etSearchBar"
+        android:layout_alignParentRight="true">
+    </LinearLayout>
 </RelativeLayout>

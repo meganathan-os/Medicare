@@ -7,13 +7,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.example.admin.medicare.R;
 import com.example.admin.medicare.activities.MainActivity;
 import com.example.admin.medicare.adapters.ListViewAdapter;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Admin on 10-03-2016.
@@ -23,6 +30,9 @@ public class MedicareFragment extends Fragment {
     private int mFragmentNumber;
     private View rootView;
     private Context mContext;
+    private List<String> items;
+    private Map<String, Integer> mapIndex;
+    private ListView listView;
 
     public MedicareFragment() {
     }
@@ -48,7 +58,9 @@ public class MedicareFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_medicare, container, false);
+        listView = (ListView) rootView.findViewById(R.id.listView);
         setAdapterToFragment();
+        displayIndex(inflater);
         return rootView;
     }
 
@@ -56,29 +68,77 @@ public class MedicareFragment extends Fragment {
     private void setAdapterToFragment() {
         switch (mFragmentNumber) {
             case 0:
-                List<String> items = ((MainActivity) getActivity()).getCategoryItems();
+                items = ((MainActivity) getActivity()).getCategoryItems();
+                Collections.sort(items);
                 Log.d("category", items.toString());
+                convertListToStringArray(items);
+               // displayIndex();
                 setAdapterToListView(items);
                 break;
             case 1:
                 items = ((MainActivity) getActivity()).getBrandItems();
+                Collections.sort(items);
                 Log.d("brand", items.toString());
                 for (int i = 0; i < items.size(); i++) {
                     items.set(i, items.get(i).replaceAll("�", ","));
                 }
+                convertListToStringArray(items);
+                //displayIndex();
                 setAdapterToListView(items);
                 break;
             case 2:
                 items = ((MainActivity) getActivity()).getGenericItems();
+                Collections.sort(items);
                 Log.d("generic", items.toString());
+                convertListToStringArray(items);
+                //displayIndex();
                 setAdapterToListView(items);
                 break;
         }
+    }
+
+    private void convertListToStringArray(List<String> list) {
+        String[] clist = new String[list.size()];
+        clist = list.toArray(clist);
+        Collections.sort(list, String.CASE_INSENSITIVE_ORDER);
+        getIndexList(clist);
     }
 
     private void setAdapterToListView(List<String> items) {
         ListView listView = (ListView) rootView.findViewById(R.id.listView);
         ListViewAdapter listViewAdapter = new ListViewAdapter(mContext, items);
         listView.setAdapter(listViewAdapter);
+    }
+
+
+    private void getIndexList(String[] categs) {
+        mapIndex = new LinkedHashMap<String, Integer>();
+        for (int i = 0; i < categs.length; i++) {
+            String categ = categs[i];
+            //String index = categ.substring(0, 1);
+            String index = categ.toUpperCase().substring(0, 1);
+
+            if (mapIndex.get(index) == null)
+                mapIndex.put(index, i);
+        }
+    }
+
+    private void displayIndex(LayoutInflater inflater) {
+        LinearLayout llSideIndexLayout = (LinearLayout) rootView.findViewById(R.id.llIndexSideLayout);
+        TextView textView;
+        List<String> indexList = new ArrayList<String>(mapIndex.keySet());
+        for (String index : indexList) {
+            textView = (TextView) inflater.inflate(R.layout.index_side_item,null);
+
+            textView.setText(index);
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    TextView selectedIndex = (TextView) v;
+                    listView.setSelection(mapIndex.get(selectedIndex.getText()));
+                }
+            });
+            llSideIndexLayout.addView(textView);
+        }
     }
 }
