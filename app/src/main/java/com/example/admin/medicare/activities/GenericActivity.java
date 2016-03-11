@@ -4,11 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ListView;
-import android.widget.TextView;
-
 import com.example.admin.medicare.R;
 import com.example.admin.medicare.adapters.GenericListViewAdapter;
-import com.example.admin.medicare.adapters.ListViewAdapter;
 import com.example.admin.medicare.utilities.DatabaseHelper;
 
 import java.io.IOException;
