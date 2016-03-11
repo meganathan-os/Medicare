@@ -61,13 +61,13 @@ public class ListViewAdapter extends BaseAdapter implements Filterable{
             public void onClick(View v) {
                 //click listener for each list item
                 switch (fragmentNumber){
-                    case 0:
+                    case Constants.FRAGMENT_CATEGORY:
                         goToNextActivity(GenericActivity.class,items.get(position));
                         break;
-                    case 1:
+                    case Constants.FRAGMENT_BRAND:
                         goToNextActivity(DetailsActivity.class,items.get(position));
                         break;
-                    case 2:
+                    case Constants.FRAGMENT_GENERIC:
                         goToNextActivity(DetailsActivity.class,items.get(position));
                         break;
                 }
@@ -80,6 +80,7 @@ public class ListViewAdapter extends BaseAdapter implements Filterable{
         Intent intent = new Intent();
         intent.setClass(mContext.getApplicationContext(), nextActivity);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(Constants.CATEGORY_LIST_KEY,item);
         intent.putExtra(Constants.GENERIC_LIST_KEY, item);
         intent.putExtra(Constants.BRAND_LIST_KEY,item);
         mContext.startActivity(intent);

@@ -10,6 +10,7 @@ import android.util.Log;
 
 import com.example.admin.medicare.R;
 import com.example.admin.medicare.fragments.MedicareFragment;
+import com.example.admin.medicare.utilities.Constants;
 import com.example.admin.medicare.utilities.DatabaseHelper;
 
 import java.io.IOException;
@@ -50,9 +51,9 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText(getResources()
                 .getText(R.string.tab_category)));
         tabLayout.addTab(tabLayout.newTab().setText(getResources()
-                .getText(R.string.tab_generic)));
-        tabLayout.addTab(tabLayout.newTab().setText(getResources()
                 .getText(R.string.tab_brand)));
+        tabLayout.addTab(tabLayout.newTab().setText(getResources()
+                .getText(R.string.tab_generic)));
         tabLayout.setTabTextColors(getResources().getColor(R.color.color_grey), getResources()
                 .getColor(R.color.colorPrimary));
         setTabClickListener(tabLayout);
@@ -84,13 +85,13 @@ public class MainActivity extends AppCompatActivity {
     private void tabClickListener(TabLayout.Tab tab){
         int id = tab.getPosition();
         switch (id){
-            case 0:
+            case Constants.FRAGMENT_CATEGORY:
                 changeFragment(MedicareFragment.class.getName(),0);
                 break;
-            case 1:
+            case Constants.FRAGMENT_BRAND:
                 changeFragment(MedicareFragment.class.getName(),1);
                 break;
-            case 2:
+            case Constants.FRAGMENT_GENERIC:
                 changeFragment(MedicareFragment.class.getName(),2);
                 break;
         }

@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.admin.medicare.R;
 import com.example.admin.medicare.activities.MainActivity;
 import com.example.admin.medicare.adapters.ListViewAdapter;
+import com.example.admin.medicare.utilities.Constants;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -73,16 +74,16 @@ public class MedicareFragment extends Fragment {
 
     private void setAdapterToFragment() {
         switch (mFragmentNumber) {
-            case 0:
+            case Constants.FRAGMENT_CATEGORY:
                 items = ((MainActivity) getActivity()).getCategoryItems();
                 Collections.sort(items);
                 Log.d("category", items.toString());
                 convertListToStringArray(items);
-               // displayIndex();
+                // displayIndex();
                 setAdapterToListView(items);
                 search();
                 break;
-            case 1:
+            case Constants.FRAGMENT_BRAND:
                 items = ((MainActivity) getActivity()).getBrandItems();
                 Collections.sort(items);
                 Log.d("brand", items.toString());
@@ -93,7 +94,7 @@ public class MedicareFragment extends Fragment {
                 //displayIndex();
                 setAdapterToListView(items);
                 break;
-            case 2:
+            case Constants.FRAGMENT_GENERIC:
                 items = ((MainActivity) getActivity()).getGenericItems();
                 Collections.sort(items);
                 Log.d("generic", items.toString());
@@ -113,7 +114,7 @@ public class MedicareFragment extends Fragment {
 
     private void setAdapterToListView(List<String> items) {
         ListView listView = (ListView) rootView.findViewById(R.id.listView);
-        listViewAdapter = new ListViewAdapter(mContext, items,mFragmentNumber);
+        listViewAdapter = new ListViewAdapter(mContext, items, mFragmentNumber);
         listView.setAdapter(listViewAdapter);
     }
 
@@ -135,7 +136,7 @@ public class MedicareFragment extends Fragment {
         TextView textView;
         List<String> indexList = new ArrayList<String>(mapIndex.keySet());
         for (String index : indexList) {
-            textView = (TextView) inflater.inflate(R.layout.index_side_item,null);
+            textView = (TextView) inflater.inflate(R.layout.index_side_item, null);
 
             textView.setText(index);
             textView.setOnClickListener(new View.OnClickListener() {
@@ -149,7 +150,7 @@ public class MedicareFragment extends Fragment {
         }
     }
 
-    private void search(){
+    private void search() {
         searchBar.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
