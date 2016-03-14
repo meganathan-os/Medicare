@@ -89,12 +89,14 @@ public class MedicareFragment extends Fragment {
                 }
                 convertListToStringArray(items);
                 setAdapterToListView(items);
+                search();
                 break;
             case Constants.FRAGMENT_GENERIC:
                 items = ((MainActivity) getActivity()).getGenericItems();
                 Collections.sort(items);
                 convertListToStringArray(items);
                 setAdapterToListView(items);
+                search();
                 break;
         }
     }
