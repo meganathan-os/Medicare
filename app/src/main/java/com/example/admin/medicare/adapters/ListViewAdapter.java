@@ -65,10 +65,21 @@ public class ListViewAdapter extends BaseAdapter implements Filterable{
                         goToNextActivity(GenericActivity.class,items.get(position));
                         break;
                     case Constants.FRAGMENT_BRAND:
-                        goToNextActivity(DetailsActivity.class,items.get(position));
+                        for (int i = 0; i < items.size(); i++) {
+                            items.set(i, items.get(i).replaceAll("•", "�"));
+                        }
+                        Intent intent = new Intent();
+                        intent.setClass(mContext.getApplicationContext(), DetailsActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.putExtra(Constants.BRAND_LIST_KEY,items.get(position));
+                        mContext.startActivity(intent);
                         break;
                     case Constants.FRAGMENT_GENERIC:
-                        goToNextActivity(DetailsActivity.class,items.get(position));
+                        Intent intent1 = new Intent();
+                        intent1.setClass(mContext.getApplicationContext(), DetailsActivity.class);
+                        intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent1.putExtra(Constants.GENERIC_LIST_KEY,items.get(position));
+                        mContext.startActivity(intent1);
                         break;
                 }
             }

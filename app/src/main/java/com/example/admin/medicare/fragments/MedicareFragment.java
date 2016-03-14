@@ -77,29 +77,23 @@ public class MedicareFragment extends Fragment {
             case Constants.FRAGMENT_CATEGORY:
                 items = ((MainActivity) getActivity()).getCategoryItems();
                 Collections.sort(items);
-                Log.d("category", items.toString());
                 convertListToStringArray(items);
-                // displayIndex();
                 setAdapterToListView(items);
                 search();
                 break;
             case Constants.FRAGMENT_BRAND:
                 items = ((MainActivity) getActivity()).getBrandItems();
                 Collections.sort(items);
-                Log.d("brand", items.toString());
                 for (int i = 0; i < items.size(); i++) {
-                    items.set(i, items.get(i).replaceAll("�", ","));
+                    items.set(i, items.get(i).replaceAll("�", "•"));
                 }
                 convertListToStringArray(items);
-                //displayIndex();
                 setAdapterToListView(items);
                 break;
             case Constants.FRAGMENT_GENERIC:
                 items = ((MainActivity) getActivity()).getGenericItems();
                 Collections.sort(items);
-                Log.d("generic", items.toString());
                 convertListToStringArray(items);
-                //displayIndex();
                 setAdapterToListView(items);
                 break;
         }
