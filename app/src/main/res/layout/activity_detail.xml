@@ -2,12 +2,18 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding_10dp">
 
     <TextView
         android:id="@+id/tvGenericName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:padding="@dimen/padding_10dp"
+        android:textSize="@dimen/text_size_20sp"
+        android:textColor="@android:color/white"
+        android:background="@color/backgroundColor"/>
 
     <ScrollView
         android:layout_above="@+id/tvBrandName"
@@ -18,12 +24,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/padding_10dp">
             <TextView
                 android:id="@+id/tvCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_5dp"/>
+                android:padding="@dimen/padding_5dp"
+                android:textSize="@dimen/text_size_16sp"
+                android:textColor="@android:color/black"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/padding_1dp"
@@ -33,7 +42,9 @@
                 android:id="@+id/tvDrugClass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_5dp"/>
+                android:padding="@dimen/padding_5dp"
+                android:textSize="@dimen/text_size_16sp"
+                android:textColor="@android:color/black"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/padding_1dp"
@@ -43,7 +54,9 @@
                 android:id="@+id/tvPharma"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_5dp"/>
+                android:padding="@dimen/padding_5dp"
+                android:textSize="@dimen/text_size_16sp"
+                android:textColor="@android:color/black"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/padding_1dp"
@@ -53,7 +66,9 @@
                 android:id="@+id/tvDailyDose"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_5dp"/>
+                android:padding="@dimen/padding_5dp"
+                android:textSize="@dimen/text_size_16sp"
+                android:textColor="@android:color/black"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/padding_1dp"
@@ -63,7 +78,9 @@
                 android:id="@+id/tvPregnancyEffects"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_5dp"/>
+                android:padding="@dimen/padding_5dp"
+                android:textSize="@dimen/text_size_16sp"
+                android:textColor="@android:color/black"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/padding_1dp"
@@ -73,7 +90,9 @@
                 android:id="@+id/tvLactatingEffects"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_5dp"/>
+                android:padding="@dimen/padding_5dp"
+                android:textSize="@dimen/text_size_16sp"
+                android:textColor="@android:color/black"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/padding_1dp"
@@ -83,7 +102,9 @@
                 android:id="@+id/tvSedation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_5dp"/>
+                android:padding="@dimen/padding_5dp"
+                android:textSize="@dimen/text_size_16sp"
+                android:textColor="@android:color/black"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/padding_1dp"
@@ -93,7 +114,9 @@
                 android:id="@+id/tvWeightGain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_5dp"/>
+                android:padding="@dimen/padding_5dp"
+                android:textSize="@dimen/text_size_16sp"
+                android:textColor="@android:color/black"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/padding_1dp"
@@ -103,7 +126,9 @@
                 android:id="@+id/tvSideEffects"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_5dp"/>
+                android:padding="@dimen/padding_5dp"
+                android:textSize="@dimen/text_size_16sp"
+                android:textColor="@android:color/black"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/padding_1dp"
@@ -113,7 +138,9 @@
                 android:id="@+id/tvLifeThreatening"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_5dp"/>
+                android:padding="@dimen/padding_5dp"
+                android:textSize="@dimen/text_size_16sp"
+                android:textColor="@android:color/black"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/padding_1dp"
@@ -123,7 +150,9 @@
                 android:id="@+id/tvDrugInteraction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_5dp"/>
+                android:padding="@dimen/padding_5dp"
+                android:textSize="@dimen/text_size_16sp"
+                android:textColor="@android:color/black"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/padding_1dp"
@@ -133,7 +162,9 @@
                 android:id="@+id/tvTest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_5dp"/>
+                android:padding="@dimen/padding_5dp"
+                android:textSize="@dimen/text_size_16sp"
+                android:textColor="@android:color/black"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/padding_1dp"
@@ -143,7 +174,9 @@
                 android:id="@+id/tvOverdose"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_5dp"/>
+                android:padding="@dimen/padding_5dp"
+                android:textSize="@dimen/text_size_16sp"
+                android:textColor="@android:color/black"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/padding_1dp"
@@ -153,7 +186,9 @@
                 android:id="@+id/tvExtraInformation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_5dp"/>
+                android:padding="@dimen/padding_5dp"
+                android:textSize="@dimen/text_size_16sp"
+                android:textColor="@android:color/black"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/padding_1dp"
@@ -163,7 +198,14 @@
                 android:id="@+id/tvReference"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_5dp"/>
+                android:padding="@dimen/padding_5dp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_16sp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/padding_1dp"
+                android:background="@color/color_grey">
+            </View>
         </LinearLayout>
 
     </ScrollView>
@@ -172,5 +214,10 @@
         android:id="@+id/tvBrandName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        android:textAlignment="center"
+        android:padding="@dimen/padding_10dp"
+        android:textSize="@dimen/text_size_20sp"
+        android:textColor="@android:color/white"
+        android:background="@color/backgroundColor"/>
 </RelativeLayout>

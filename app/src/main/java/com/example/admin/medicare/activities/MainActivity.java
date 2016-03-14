@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText(getResources()
                 .getText(R.string.tab_generic)));
         tabLayout.setTabTextColors(getResources().getColor(R.color.color_grey), getResources()
-                .getColor(R.color.colorPrimary));
+                .getColor(R.color.colorPrimaryDark));
         setTabClickListener(tabLayout);
     }
 
