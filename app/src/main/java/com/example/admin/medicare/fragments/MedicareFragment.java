@@ -37,7 +37,7 @@ public class MedicareFragment extends Fragment {
     private List<String> items;
     private Map<String, Integer> mapIndex;
     private ListView listView;
-    private EditText searchBar;
+    private SearchView searchBar;
     private ListViewAdapter listViewAdapter;
 
     public MedicareFragment() {
@@ -65,7 +65,7 @@ public class MedicareFragment extends Fragment {
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_medicare, container, false);
         listView = (ListView) rootView.findViewById(R.id.listView);
-        searchBar = (EditText) rootView.findViewById(R.id.etSearchBar);
+        searchBar = (SearchView) rootView.findViewById(R.id.etSearchBar);
         setAdapterToFragment();
         return rootView;
     }
@@ -127,20 +127,16 @@ public class MedicareFragment extends Fragment {
     }
 
     private void search() {
-        searchBar.addTextChangedListener(new TextWatcher() {
+        searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+            public boolean onQueryTextSubmit(String query) {
+                return false;
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                listViewAdapter.getFilter().filter(s);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                listViewAdapter.getFilter();
+            public boolean onQueryTextChange(String newText) {
+                listViewAdapter.getFilter().filter(newText);
+                return false;
             }
         });
     }

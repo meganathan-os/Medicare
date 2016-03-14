@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <EditText
+    <SearchView
         android:id="@+id/etSearchBar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/search_bar_height"
@@ -19,7 +19,8 @@
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="@dimen/padding_10dp">
         </ListView>
     </LinearLayout>
 
