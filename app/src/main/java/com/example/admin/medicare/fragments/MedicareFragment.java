@@ -67,7 +67,6 @@ public class MedicareFragment extends Fragment {
         listView = (ListView) rootView.findViewById(R.id.listView);
         searchBar = (EditText) rootView.findViewById(R.id.etSearchBar);
         setAdapterToFragment();
-        displayIndex(inflater);
         return rootView;
     }
 
@@ -124,25 +123,6 @@ public class MedicareFragment extends Fragment {
 
             if (mapIndex.get(index) == null)
                 mapIndex.put(index, i);
-        }
-    }
-
-    private void displayIndex(LayoutInflater inflater) {
-        LinearLayout llSideIndexLayout = (LinearLayout) rootView.findViewById(R.id.llIndexSideLayout);
-        TextView textView;
-        List<String> indexList = new ArrayList<String>(mapIndex.keySet());
-        for (String index : indexList) {
-            textView = (TextView) inflater.inflate(R.layout.index_side_item, null);
-
-            textView.setText(index);
-            textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    TextView selectedIndex = (TextView) v;
-                    listView.setSelection(mapIndex.get(selectedIndex.getText()));
-                }
-            });
-            llSideIndexLayout.addView(textView);
         }
     }
 
