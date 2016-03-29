@@ -21,6 +21,7 @@ import com.example.admin.medicare.adapters.ListViewAdapter;
 import com.example.admin.medicare.utilities.Constants;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -29,7 +30,7 @@ import java.util.Map;
 /**
  * Created by Admin on 10-03-2016.
  */
-public class MedicareFragment extends Fragment {
+public class MedicareFragment extends Fragment implements View.OnClickListener {
     private static final String FRAGMENT_NUMBER = "param1";
     private int mFragmentNumber;
     private View rootView;
@@ -39,6 +40,7 @@ public class MedicareFragment extends Fragment {
     private ListView listView;
     private SearchView searchBar;
     private ListViewAdapter listViewAdapter;
+    String[] glist;
 
     public MedicareFragment() {
     }
@@ -66,12 +68,12 @@ public class MedicareFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_medicare, container, false);
         listView = (ListView) rootView.findViewById(R.id.listView);
         searchBar = (SearchView) rootView.findViewById(R.id.etSearchBar);
-        setAdapterToFragment();
+        setAdapterToFragment(inflater,rootView);
         return rootView;
     }
 
 
-    private void setAdapterToFragment() {
+    private void setAdapterToFragment(LayoutInflater inflater,View v) {
         switch (mFragmentNumber) {
             case Constants.FRAGMENT_CATEGORY:
                 items = ((MainActivity) getActivity()).getCategoryItems();
@@ -79,6 +81,12 @@ public class MedicareFragment extends Fragment {
                 convertListToStringArray(items);
                 setAdapterToListView(items);
                 search();
+
+                glist=new String[items.size()];
+                glist=items.toArray(glist);
+                Arrays.asList(glist);
+                getIndexList(glist);
+                displayIndex(inflater,v);
                 break;
             case Constants.FRAGMENT_BRAND:
                 items = ((MainActivity) getActivity()).getBrandItems();
@@ -89,6 +97,12 @@ public class MedicareFragment extends Fragment {
                 convertListToStringArray(items);
                 setAdapterToListView(items);
                 search();
+
+                glist=new String[items.size()];
+                glist=items.toArray(glist);
+                Arrays.asList(glist);
+                getIndexList(glist);
+                displayIndex(inflater,v);
                 break;
             case Constants.FRAGMENT_GENERIC:
                 items = ((MainActivity) getActivity()).getGenericItems();
@@ -96,6 +110,12 @@ public class MedicareFragment extends Fragment {
                 convertListToStringArray(items);
                 setAdapterToListView(items);
                 search();
+
+                glist=new String[items.size()];
+                glist=items.toArray(glist);
+                Arrays.asList(glist);
+                getIndexList(glist);
+                displayIndex(inflater,v);
                 break;
         }
     }
@@ -126,6 +146,19 @@ public class MedicareFragment extends Fragment {
         }
     }
 
+    private void displayIndex(LayoutInflater inflater,View v) {
+        LinearLayout indexLayout = (LinearLayout) v.findViewById(R.id.side_index);
+
+        TextView textView;
+        List<String> indexList = new ArrayList<String>(mapIndex.keySet());
+        for (String index : indexList) {
+            textView = (TextView) inflater.inflate(R.layout.list_view_single_item, null);
+            textView.setText(index);
+            textView.setOnClickListener(this);
+            indexLayout.addView(textView);
+        }
+    }
+
     private void search() {
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -139,5 +172,11 @@ public class MedicareFragment extends Fragment {
                 return false;
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        TextView selectedIndex = (TextView) v;
+        listView.setSelection(mapIndex.get(selectedIndex.getText()));
     }
 }
