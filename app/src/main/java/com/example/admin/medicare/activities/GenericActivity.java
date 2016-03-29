@@ -78,13 +78,13 @@ public class GenericActivity extends AppCompatActivity implements View.OnClickLi
         for (int i = 0; i < categs.length; i++) {
             String categ = categs[i];
             String index = categ.substring(0, 1);
-            for(int j=0;j<=9;j++)
+          /*  for(int j=0;j<=9;j++)
             {
                 if(Integer.parseInt(index)==j)
                 {
                     index="#";
                 }
-            }
+            }*/
 
             if (mapIndex.get(index) == null)
                 mapIndex.put(index, i);
